@@ -204,3 +204,19 @@ com.astrapay
 
 - **Not Found**
   ![DELETE Note Not Found](screenshots/DELETE-Note-Not%20Found.png)
+
+---
+
+### 🎨 UI (Frontend)
+
+#### Empty List
+![UI Empty List](screenshots/UI-Empty-List.png)
+
+#### Notes List (6 Notes)
+![UI 6 Notes List](screenshots/UI-6-Notes-List.png)
+
+#### Note Form
+![UI Note Form](screenshots/UI-Note-Form.png)
+
+#### Delete Note Confirmation
+![UI Delete Note Confirmation](screenshots/UI-Delete-Note-Confirmation.png)
