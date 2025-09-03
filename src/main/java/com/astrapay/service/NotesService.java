@@ -28,6 +28,17 @@ public class NotesService {
                 .map(n -> new NoteDto(n.getId(), n.getContent()))
                 .collect(Collectors.toList());
     }
+    
+    public NoteDto getNoteById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Note ID cannot be null");
+        }
+        
+        log.debug("Looking for note with id: {}", id);
+        return repository.findById(id)
+                .map(note -> new NoteDto(note.getId(), note.getContent()))
+                .orElseThrow(() -> new NoteNotFoundException("Note with id " + id + " not found"));
+    }
 
     public NoteDto create(NoteRequestDto request) {
         log.info("Creating new note");
