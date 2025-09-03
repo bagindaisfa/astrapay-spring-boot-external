@@ -1,0 +1,83 @@
+/* Card styles */
+.card {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Card header styles */
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding: 0.75rem 1.25rem;
+}
+
+/* List group item styles */
+.list-group-item {
+  border-left: none;
+  border-right: none;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.list-group-item:first-child {
+  border-top: none;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* Note preview styles */
+.note-preview {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #6c757d;
+  font-size: 0.9em;
+  margin-bottom: 0.25rem;
+}
+
+/* Timestamp styles */
+.note-timestamp {
+  font-size: 0.75rem;
+  color: #6c757d;
+}
+
+/* Loading spinner */
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 0.2em;
+}
+
+/* Empty state */
+.empty-state {
+  padding: 2rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.empty-state i {
+  font-size: 3rem;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  .list-group-item {
+    padding: 0.75rem 1rem;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}

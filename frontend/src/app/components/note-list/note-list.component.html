@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sidebar with note list -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Notes</h5>
+          <button class="btn btn-primary btn-sm" (click)="addNote()">
+            <i class="bi bi-plus-lg"></i> New Note
+          </button>
+        </div>
+        
+        <div class="list-group list-group-flush">
+          <!-- Loading state -->
+          @if (isLoading) {
+            <div class="text-center p-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          }
+          
+          <!-- Error state -->
+          @if (errorMessage) {
+            <div class="alert alert-danger m-3">
+              {{ errorMessage }}
+              <button class="btn btn-sm btn-outline-secondary ms-2" (click)="loadNotes()">
+                Retry
+              </button>
+            </div>
+          }
+          
+          <!-- Note list -->
+          @for (note of notes; track note.id) {
+            <a href="#" 
+               class="list-group-item list-group-item-action"
+               [class.active]="selectedNote?.id === note.id"
+               (click)="$event.preventDefault(); onSelect(note)">
+              <div class="d-flex w-100 justify-content-between">
+                <h6 class="mb-1">
+                  {{ (note.content.length > 30) ? (note.content | slice:0:30) + '...' : note.content }}
+                </h6>
+                @if (note.updatedAt) {
+                  <small>{{ note.updatedAt | date:'short' }}</small>
+                }
+              </div>
+              <p class="mb-1 text-muted">
+                {{ (note.content.length > 100) ? (note.content | slice:0:100) + '...' : note.content }}
+              </p>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-sm btn-outline-danger" (click)="$event.stopPropagation(); onDelete(note.id!)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </a>
+          } @empty {
+            <div class="text-center p-3 text-muted">
+              No notes found. Click 'New Note' to create one.
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    
+    <!-- Note detail/edit form -->
+    <div class="col-md-8">
+      @if (selectedNote) {
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">{{ selectedNote.id ? 'Edit Note' : 'New Note' }}</h5>
+          </div>
+          <div class="card-body">
+            <app-note-form
+              [note]="selectedNote"
+              (save)="onSaveNote($event)"
+              (cancel)="selectedNote = null">
+            </app-note-form>
+          </div>
+        </div>
+      } @else {
+        <div class="text-center text-muted p-5">
+          <i class="bi bi-journal-text" style="font-size: 3rem;"></i>
+          <p class="mt-3">Select a note or create a new one to get started.</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

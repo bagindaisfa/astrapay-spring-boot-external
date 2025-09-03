@@ -1,0 +1,27 @@
+<form (ngSubmit)="onSubmit()" #noteForm="ngForm">
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <textarea
+      class="form-control"
+      id="content"
+      name="content"
+      [(ngModel)]="note.content"
+      rows="10"
+      required
+      #content="ngModel"
+      [class.is-invalid]="content.invalid && content.touched"
+    ></textarea>
+    <div class="invalid-feedback" *ngIf="content.invalid && content.touched">
+      Content is required
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-between">
+    <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">
+      Cancel
+    </button>
+    <button type="submit" class="btn btn-primary" [disabled]="!noteForm.form.valid">
+      Save
+    </button>
+  </div>
+</form>
