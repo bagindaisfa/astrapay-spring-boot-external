@@ -127,7 +127,7 @@ The build artifacts will be stored in the `dist/` directory.
 
 Run the tests using:
 ```bash
-mvn test
+mvn test -X
 ```
 
 ### Project Structure
