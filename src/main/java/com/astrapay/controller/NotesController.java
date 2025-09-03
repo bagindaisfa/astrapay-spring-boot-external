@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/notes")
+@CrossOrigin(origins = {"http://localhost:8000", "http://localhost:4200"}, allowedHeaders = "*", allowCredentials = "true")
 public class NotesController {
 
     private final NotesService service;
