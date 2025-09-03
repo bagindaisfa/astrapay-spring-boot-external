@@ -1,17 +1,24 @@
-# Spring Boot Notes API
+# Notes Application
 
-A RESTful API for managing notes, built with Spring Boot and following Astrapay's conventions.
+A full-stack notes application with a Spring Boot backend and Angular frontend, following Astrapay's conventions.
 
 ## 🚀 Prerequisites
 
+### Backend
 - Java 11 or higher
 - Maven 3.6.3 or higher
-- Your favorite IDE (IntelliJ IDEA, Eclipse, VS Code, etc.)
+
+### Frontend
+- Node.js 16.x or higher
+- npm 8.x or higher (comes with Node.js)
+- Angular CLI 17.x
+
+### Development Tools
+- Your favorite IDE (IntelliJ IDEA, VS Code, etc.)
 
 ## 📦 Dependencies
 
-The project uses the following key dependencies:
-
+### Backend
 - **Spring Boot 2.7.18**
   - spring-boot-starter-web
   - spring-boot-starter-validation
@@ -19,6 +26,12 @@ The project uses the following key dependencies:
 - **Lombok** - For reducing boilerplate code
 - **SpringFox Swagger** - For API documentation
 - **H2 Database** - In-memory database (for development)
+
+### Frontend
+- **Angular 17**
+- **Bootstrap 5** - For responsive design
+- **RxJS** - For reactive programming
+- **Bootstrap Icons** - For UI icons
 
 ## 🛠️ Installation
 
@@ -28,23 +41,80 @@ The project uses the following key dependencies:
    cd astrapay-spring-boot-external
    ```
 
-2. Build the project:
+2. Backend setup:
    ```bash
+   # Build the project
    mvn clean install
+   ```
+
+3. Frontend setup:
+   ```bash
+   # Navigate to frontend directory
+   cd frontend
+   
+   # Install dependencies
+   npm install
    ```
 
 ## 🚀 Running the Application
 
-### Running with Maven
+### Backend
+
+#### Running with Maven
 ```bash
+# From project root
 mvn spring-boot:run
 ```
 
-### Running the JAR file
+The backend will start on `http://localhost:8000`
+
+### Frontend
+
+#### Development Server
 ```bash
-mvn package
-java -jar target/astrapay-spring-boot-external-1.0-SNAPSHOT.jar
+# From the frontend directory
+cd frontend
+ng serve
 ```
+
+The frontend will be available at `http://localhost:4200`
+
+#### Production Build
+```bash
+# From the frontend directory
+cd frontend
+ng build --configuration=production
+```
+
+The build artifacts will be stored in the `dist/` directory.
+
+## 💻 Development Workflow
+
+1. Start the backend server:
+   ```bash
+   # In the project root
+   mvn spring-boot:run
+   ```
+
+2. In a separate terminal, start the frontend development server:
+   ```bash
+   # In the frontend directory
+   cd frontend
+   ng serve
+   ```
+
+3. The application will be available at `http://localhost:4200`
+
+## 📦 Environment Configuration
+
+### Backend
+- The backend runs on port 8080 by default
+- Configure database settings in `src/main/resources/application.properties`
+
+### Frontend
+- The frontend runs on port 4200 by default
+- API base URL is configured in `frontend/src/app/services/note.service.ts`
+- Environment-specific settings can be configured in `frontend/src/environments/`
 
 ## 📝 API Endpoints
 
@@ -58,6 +128,21 @@ java -jar target/astrapay-spring-boot-external-1.0-SNAPSHOT.jar
 Run the tests using:
 ```bash
 mvn test
+```
+
+### Project Structure
+```
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── components/     # Reusable components
+│   │   ├── services/       # API services
+│   │   ├── models/         # TypeScript interfaces
+│   │   ├── app.component.* # Root component
+│   │   └── app.module.ts   # Root module
+│   ├── assets/            # Static assets
+│   └── environments/      # Environment configurations
+└── angular.json           # Angular CLI configuration
 ```
 
 ## 📦 Project Structure
